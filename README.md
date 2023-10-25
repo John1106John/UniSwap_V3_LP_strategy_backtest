@@ -24,7 +24,7 @@ sell 格式為list，賣出時機
 
 ### 關於main.py的參數 :
 只有四個參數，基本上可以不用改  
-start_date = '2021-08-01 00:00:00'  
+start_date = '2021-08-01 00:00:00'   
 end_date = '2023-07-31 00:00:00'  
 target = 1000 #初始投入金額(USDC)  
 investment_method = "compound_interest"  
