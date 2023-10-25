@@ -23,15 +23,15 @@ buy 格式為類似dictionary的格式，key值為買入時機，value為(mini,m
 sell 格式為list，賣出時機  
 
 ### 關於main.py的參數 :
-只有四個參數，基本上可以不用改
-start_date = '2021-08-01 00:00:00'
-end_date = '2023-07-31 00:00:00'
-target = 1000 #初始投入金額(USDC)
-investment_method = "compound_interest"
-
-investment_method為投資方式，有兩種模式，"compound_interest"和"simple_interest"，"compound_interest"指的是每次提供流動性獲得的手續費和本金一起投入下一次的提供流動性，而"simple_interest"則是只投入本金
-基本上用"compound_interest"即可
-
+只有四個參數，基本上可以不用改  
+start_date = '2021-08-01 00:00:00'  
+end_date = '2023-07-31 00:00:00'  
+target = 1000 #初始投入金額(USDC)  
+investment_method = "compound_interest"  
+  
+investment_method為投資方式，有兩種模式，"compound_interest"和"simple_interest"，"compound_interest"指的是每次提供流動性獲得的手續費和本金一起投入下一次的提供流動性，而"simple_interest"則是只投入本金  
+基本上用"compound_interest"即可  
+  
 ## 輸出結果解釋
 如果直接跑程式會有以下輸出  
 投資金額 : 1000   
