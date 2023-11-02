@@ -32,6 +32,7 @@ def graph(POOL_ID,fromdate):
         close
         feeGrowthGlobal0X128
         feeGrowthGlobal1X128
+        open
         }
         }
     """
@@ -70,7 +71,7 @@ def update(address):
 
     while int(last_timestamp) != int(rounded_timestamp) :
         new_df = graph('0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8',int(last_timestamp))
-        df = df.append(new_df)
+        df = pd.concat([df,new_df])
         last_timestamp = df["periodStartUnix"].iloc[-1]   #資料最後一項時間
         
     df = df.loc[:,"periodStartUnix":]    

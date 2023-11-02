@@ -46,16 +46,16 @@ def uniswap_backtest_ETH(start_date,end_date,mini,maxi,target,hold_target):
     SMAX=np.sqrt(maxi* 10 ** (decimal))  
 
     if base == 0:
-        price0 = dpd['close'].iloc[-1]
+        price0 = dpd['open'].iloc[-1]
         
-        sqrt0 = np.sqrt(dpd['close'].iloc[-1]* 10 ** (decimal))
-        dpd['price0'] = dpd['close']
+        sqrt0 = np.sqrt(dpd['open'].iloc[-1]* 10 ** (decimal))
+        dpd['price0'] = dpd['open']
 
     else:
-        price0 = 1/dpd['close'].iloc[-1]
+        price0 = 1/dpd['open'].iloc[-1]
         
-        sqrt0= np.sqrt(1/dpd['close'].iloc[-1]* 10 ** (decimal))
-        dpd['price0']= 1/dpd['close']
+        sqrt0= np.sqrt(1/dpd['open'].iloc[-1]* 10 ** (decimal))
+        dpd['price0']= 1/dpd['open']
 
     if sqrt0>SMIN and sqrt0<SMAX:
 

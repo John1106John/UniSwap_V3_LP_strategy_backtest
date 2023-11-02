@@ -9,7 +9,7 @@ import backtest as bt
 def main():
 
     # 設定回測參數(可更改)
-    start_date = '2021-08-01 00:00:00'
+    start_date = '2021-06-01 00:00:00'
     end_date = '2023-07-31 00:00:00'
     target = 1000 #初始投入金額
     investment_method = "compound_interest"

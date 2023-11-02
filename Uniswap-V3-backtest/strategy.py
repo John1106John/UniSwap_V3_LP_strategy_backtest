@@ -16,7 +16,8 @@ def my_strategy(df,start_date,end_date):
     overbought_threshold = 1
     oversold_threshold = 0
     df["position"] = None
-     
+    
+    #注意格式! buy、sell
     buy = {}  
     sell = [] 
     

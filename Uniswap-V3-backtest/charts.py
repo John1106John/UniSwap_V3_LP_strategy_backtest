@@ -29,10 +29,11 @@ def chart1(dpd,base,myliquidity,hold_V,price0):
     #dpd['fgV']= (dpd['fg0'] / dpd['close'].iloc[0] + dpd['fg1'])
     #rint(dpd['fg1']/dpd['amount1unb'])
 
-    data=dpd[['date','myfee0','myfee1','fgV','feeV','feeusd','amountV','ActiveLiq','amountunb','amount0','amount1','close']]
+    data=dpd[['date','myfee0','myfee1','fgV','feeV','feeusd','amountV','ActiveLiq','amountunb','amount0','amount1','close','open']]
     data=data.fillna(0)
     amount0_start = data["amount0"].iloc[-1]
     amount1_start = data["amount1"].iloc[-1]
+    open_price = data["open"].iloc[-1]
     
     temp =  data.resample('D',on='date').sum()
     final1=temp[['myfee0','myfee1','feeV','fgV','feeusd']].copy()
@@ -41,7 +42,7 @@ def chart1(dpd,base,myliquidity,hold_V,price0):
     final1['ActiveLiq']=temp2['ActiveLiq'].copy()
     
     temp3 = data.resample('D',on='date').first()
-    final1[['amountV','amountunb']]=temp3[['amountV','amountunb']].copy()
+    final1[['amountV','amountunb','open']]=temp3[['amountV','amountunb','open']].copy()
     temp4 = data.resample('D',on='date').last()
     final1[['amountVlast',"close","amount0","amount1"]]=temp4[['amountV',"close","amount0","amount1"]]
 
@@ -53,8 +54,8 @@ def chart1(dpd,base,myliquidity,hold_V,price0):
     
     
     V = amount0_start + price0*amount1_start
-    amount0_hold = amount0_start * hold_V / V
-    amount1_hold = amount1_start * hold_V / V
+    amount0_hold = 0
+    amount1_hold = hold_V / open_price
     final1["hold_value"] = amount0_hold + amount1_hold*final1["close"]
     final1["hold_value_compare"] = amount0_start + amount1_start*final1["close"]
     final1["hold_compare_change"] = final1["hold_value_compare"].diff()  #PNL
