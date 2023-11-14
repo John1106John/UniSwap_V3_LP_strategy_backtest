@@ -41,7 +41,10 @@ def my_strategy(df,start_date,end_date):
                 if df.loc[df.index[i-2], "BB%B"] >= overbought_threshold and df.loc[df.index[i-1], "BB%B"] < overbought_threshold : 
                     df.loc[df.index[i]:,"position"] = None
                     sell.append(df.index[i])
-
+                #最後一天，要平倉    
+                elif  i == len(df)-1 :
+                    df.loc[df.index[i]:,"position"] = None
+                    sell.append(df.index[i])
   
     return df, buy, sell
 
